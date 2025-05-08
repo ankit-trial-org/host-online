@@ -17,6 +17,11 @@
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  
+
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -162,19 +167,19 @@
           <div class="row gy-4">
 
             <div class="col-md-6">
-              <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+              <input type="text" id="name" class="form-control" placeholder="Your Name" required="">
             </div>
 
             <div class="col-md-6 ">
-              <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
+              <input type="email" class="form-control" id="email" placeholder="Your Email" required="">
             </div>
 
             <div class="col-md-12">
-              <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
+              <input type="text" class="form-control" id="subject" placeholder="Subject" required="">
             </div>
 
             <div class="col-md-12">
-              <textarea class="form-control" name="msg" rows="6" placeholder="Message" required=""></textarea>
+              <textarea class="form-control" id="msg" rows="6" placeholder="Message" required=""></textarea>
             </div>
 
             <div class="col-md-12 text-center">
@@ -182,8 +187,72 @@
               <div class="error-message"></div>
               <div class="sent-message">Your message has been sent. Thank you!</div>
               <input type="hidden" name="_captcha" value="false">
-              <button type="submit">Send Message</button>
+              <button onclick="showToast()" type="submit">Send Message</button>
             </div>
+
+            <script>
+              function showToast() {
+                  if(document.getElementById("name").value=="")
+                  {
+                    Toastify({
+                  text: "Please Enter your name !!",
+                  duration: 3000,
+                  close: true,
+                  gravity: "top", // `top` or `bottom`
+                  position: 'right', // `left`, `center` or `right`
+                  backgroundColor: "red",
+                }).showToast();
+
+                  }else if(document.getElementById("email").value=="" || !document.getElementById("email").value.includes("@") || !document.getElementById("email").value.includes("."))
+                  {
+                    Toastify({
+                  text: "Email is invalid !!",
+                  duration: 3000,
+                  close: true,
+                  gravity: "top", // `top` or `bottom`
+                  position: 'right', // `left`, `center` or `right`
+                  backgroundColor: "red",
+                }).showToast();
+
+    
+                  
+               } else if(document.getElementById("subject").value=="")
+                  {
+                    Toastify({
+                  text: "Subject field cannot be Blank !!",
+                  duration: 3000,
+                  close: true,
+                  gravity: "top", // `top` or `bottom`
+                  position: 'right', // `left`, `center` or `right`
+                  backgroundColor: "red",
+                }).showToast();
+
+                  }else if(document.getElementById("msg").value=="")
+                  {
+                    Toastify({
+                  text: "Message field cannot be Blank !!",
+                  duration: 3000,
+                  close: true,
+                  gravity: "top", // `top` or `bottom`
+                  position: 'right', // `left`, `center` or `right`
+                  backgroundColor: "red",
+                }).showToast();
+                  }
+                  else{
+                Toastify({
+                  text: "Your message has been sent. Thank you!",
+                  duration: 3000,
+                  close: true,
+                  gravity: "top", // `top` or `bottom`
+                  position: 'right', // `left`, `center` or `right`
+                  backgroundColor: "#4CAF50",
+                }).showToast();
+              }
+              }
+          
+          
+            </script>
+          
 
           </div>
         </form><!-- End Contact Form -->
