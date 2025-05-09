@@ -124,7 +124,6 @@
               </div>
             </div>
           </div><!-- End Info Item -->
-
           <div class="col-md-6">
             <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="300">
               <i class="icon bi bi-telephone flex-shrink-0"></i>
@@ -134,7 +133,6 @@
               </div>
             </div>
           </div><!-- End Info Item -->
-
           <div class="col-md-6">
             <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="400">
               <i class="icon bi bi-envelope flex-shrink-0"></i>
@@ -163,34 +161,45 @@
 
         </div>
 
-        <form action="https://formsubmit.co/ankitgorai2002@gmail.com" method="POST" class="php-email-form" data-aos="fade-up" data-aos-delay="600">
+        <form action="https://formsubmit.co/goraiankit220@gmail.com" method="POST" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
           <div class="row gy-4">
 
             <div class="col-md-6">
-              <input type="text" id="name" class="form-control" placeholder="Your Name" required="">
+              <input type="text" id="name" name="name" class="form-control" placeholder="Your Name" required="">
             </div>
 
             <div class="col-md-6 ">
-              <input type="email" class="form-control" id="email" placeholder="Your Email" required="">
+              <input type="email" name="email" class="form-control" id="email" placeholder="Your Email" required="">
             </div>
 
             <div class="col-md-12">
-              <input type="text" class="form-control" id="subject" placeholder="Subject" required="">
+              <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required="">
             </div>
 
             <div class="col-md-12">
-              <textarea class="form-control" id="msg" rows="6" placeholder="Message" required=""></textarea>
+              <textarea class="form-control" id="msg" rows="6" name="msg" placeholder="Message" required=""></textarea>
             </div>
 
-            <div class="col-md-12 text-center">
+            <div class="col-md-2 text-center">
               <div class="loading">Loading</div>
               <div class="error-message"></div>
               <div class="sent-message">Your message has been sent. Thank you!</div>
               <input type="hidden" name="_captcha" value="false">
-              <button onclick="showToast()" type="submit">Send Message</button>
+              <button onclick="showToast();resetvalues()" type="submit">Send Message</button>
             </div>
 
             <script>
+
+              function resetvalues() {
+                        setTimeout(() => {
+                       // Reset the value
+                      
+                document.getElementById("name").value = "";
+                document.getElementById("email").value = "";
+                document.getElementById("subject").value = "";
+                document.getElementById("msg").value = "";
+              }, 3000);
+              }
               function showToast() {
                   if(document.getElementById("name").value=="")
                   {
@@ -239,7 +248,7 @@
                 }).showToast();
                   }
                   else{
-                Toastify({
+              setTimeout(()=>{  Toastify({
                   text: "Your message has been sent. Thank you!",
                   duration: 3000,
                   close: true,
@@ -247,6 +256,7 @@
                   position: 'right', // `left`, `center` or `right`
                   backgroundColor: "#4CAF50",
                 }).showToast();
+              },2000)
               }
               }
           

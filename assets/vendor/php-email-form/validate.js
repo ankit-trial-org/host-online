@@ -76,10 +76,10 @@
     });
   }
 
-  // function displayError(thisForm, error) {
-  //   thisForm.querySelector('.loading').classList.remove('d-block');
-  //   thisForm.querySelector('.error-message').innerHTML = `Your message has been sent. Thank you!`;
-  //   thisForm.querySelector('.error-message').classList.add('d-block');
-  // }
+  function displayError(thisForm, error) {
+    thisForm.querySelector('.loading').classList.remove('d-block');
+    thisForm.querySelector('.error-message').innerHTML = `<i style="color: #059652; font-size: 1.8rem;" class="bi bi-check2-all"></i>`;
+    thisForm.querySelector('.error-message').classList.add('d-block');
+  }
 
 })();
